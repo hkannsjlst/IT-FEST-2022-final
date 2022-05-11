@@ -1,3 +1,8 @@
+<!-- Подключения к бд для взаимодействия  -->
+<?php
+include "config/config.php"; 
+?>
+
 <!-- Файл для обработки формы записи  -->
 <?php
 	$firstName = $_POST['firstName'];
@@ -7,7 +12,6 @@
 	$number = $_POST['number'];
 
 	// покдлючение к бд чтобы сохранять отправленные данные 
-	$conn = new mysqli('localhost','root','','test');
 	if($conn->connect_error){
 		echo "$conn->connect_error";
 		die("Connection Failed : ". $conn->connect_error);

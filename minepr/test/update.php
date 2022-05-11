@@ -1,7 +1,7 @@
 <?php
 //файл для обновления информации 
 
-include('database_connection.php');
+include('../config/database_connection.php');
 
 if(isset($_POST["image_id"]))
 {

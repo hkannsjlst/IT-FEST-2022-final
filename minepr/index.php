@@ -149,41 +149,34 @@ include "config/we.php";
 </div>
          
               <!-- Делаем запрос на подключение к бд с нужной инфой   -->
+       
+ 
               <?php
+  $products = mysqli_query($connect, "SELECT * FROM `infa`");
 
+/*
+ * Преобразовываем полученные данные в нормальный массив
+ */
 
+$products = mysqli_fetch_all($products);
 
-$server = "127.0.0.1";
-$login = "root";
-$pass = "";
-$name_db = "mydb";
+/*
+ * Перебираем массив и рендерим HTML с данными из массива
+ * Ключ 0 - id
+ * Ключ 1 - описание 
+ * Ключ 2 - загоолвок  
+ * Ключ 4 - фото
+ */
 
-$link = mysqli_connect($server, $login, $pass, $name_db);
-if ($link== False ){
-    echo "соединение не удаорсь ";
-}
-
-
-// Переменная для работы с блоками (выводом)
-$resul = mysqli_query($link,"SELECT * FROM `infa` ");
-?>
-
-
-
-
-
-  <!-- Выводим с помощью цикла информацию о сервере из бд  5 карточек  -->
-  <?php
-while($ba= mysqli_fetch_assoc($resul))
-{
-  ?>
+foreach ($products as $product) {
+    ?>
+ <div class="col-md-4">
   <div class="col-md-4">
-  <div class="col-md-4">
-  <img class="feature-img img-responsive" src="test/files/<?php echo $ba['email']; ?>" style="height:auto">
+  <img class="feature-img img-responsive" src="test/files/<?php echo $product[4]; ?>" style="height:auto">
   </div>
   <div class="col-md-8">
-    <h3><?php echo $ba['firstname'] ?></h3>
-    <p><?php echo $ba['lastname'] ?></p>
+    <h3><?php echo $product[2] ?></h3>
+    <p><?php echo $product[1] ?></p>
   </div>
   <div class="col-md-8 col-md-offset-2">
 </div>
@@ -191,8 +184,9 @@ while($ba= mysqli_fetch_assoc($resul))
 </div>
 
 </div>
+<?php 
 
-<?php
+
 }
 ?>
 
@@ -202,6 +196,9 @@ while($ba= mysqli_fetch_assoc($resul))
         </div>
         </div>
         
+       
+
+
 
 <!-- конец списка с инфой  -->
 <hr >

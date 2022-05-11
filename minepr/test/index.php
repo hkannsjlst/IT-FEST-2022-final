@@ -1,4 +1,4 @@
-<!-- при загрузке одинаковых по названию файлов эта галерея сменит название 2 го файла, чтобы не было проблем -->
+<!-- при загрузке одинаковых по названию файлов эта галерея сменит название 2 го файла, чтобы не было проблем. Одновременно можно загружать несколько файлов  -->
 
 
 <!DOCTYPE html>
@@ -11,12 +11,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="icon" href="img/mods_photos/fav.png" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="menuadmin.css">
+  <link rel="icon" href="../img/mods_photos/fav.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="../css/menuadmin.css">
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
-      <li class="menu__group"><a href="http://minepr/test/index.php" class="menu__link r-link text-underlined">В галерею из бд </a></li>
-      <li class="menu__group"><a href="http://minepr/index.php" class="menu__link r-link text-underlined">На главную</a></li>
+    <li class="menu__group"><a href="../test/index.php" class="menu__link r-link text-underlined">В галерею для загрузки файла в бд </a></li>
+      <li class="menu__group"><a href="../index.php" class="menu__link r-link text-underlined">На главную</a></li>
+     
    
     </ul>
   </nav>

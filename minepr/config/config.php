@@ -1,4 +1,4 @@
- <?php
+<?php
 $servername = "localhost";
 $username = "root"; // имя 
 $password = ""; // пароль, у меня он пустой 

@@ -1,6 +1,6 @@
-
-
-
+<?php
+require_once('config/we.php')
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -76,7 +76,7 @@
                     <li><a href="#photos">Контакты </a></li>
 
                    
-                    <li><a href= "http://minepr/blog.php" >
+                    <li><a href= "blog.php" >
                     Новости в блоге </a></li>
                     <!-- Конец меню -->
           
@@ -126,37 +126,37 @@
 
 
 
-<!-- Покдлючение к нужной бд  -->
  <?php
-$server = "127.0.0.1";
-$login = "root";
-$pass = "";
-$name_db = "mydb";
+  $products = mysqli_query($connect, "SELECT * FROM `users`");
 
-$link = mysqli_connect($server, $login, $pass, $name_db);
-if ($link== False ){
-    echo "соединение не удаорсь ";
-}
+/*
+ * Преобразовываем полученные данные в нормальный массив
+ */
 
-// Переменная для вывода информации с бд 
+$products = mysqli_fetch_all($products);
 
-$ret = mysqli_query($link,"SELECT * FROM `users` ");
-?>
+/*
+ * Перебираем массив и рендерим HTML с данными из массива "
+ * Ключ 0 - id
+ * Ключ 1 - фото и название 
+ * Ключ 2 -координаты е  
 
-<!-- Генерируем с помощью цикла блоки из информации бд  -->
-<?php
-
-while ($be = mysqli_fetch_assoc($ret))
-{
-  ?>
-  <div class="tile"> 
-<img src="test/files/<?php echo $be['firstname'] ?>" alt="" />
-  <div class="text">
-  <h3 class="animate-text "> Название:<?php echo $be['firstname'] ?></h3>
-  <br>
-  <p class="animate-text"> Координаты: <?php echo $be['lastname']; ?></p>
  
-  <p class="animate-text"> Добавил: <?php echo $be['gender'] ?> </p>
+ * Ключ 3 автор 
+ 
+ */
+
+foreach ($products as $product) {
+    ?>
+ 
+  <div class="tile"> 
+<img src="test/files/<?php echo $product[1]; ?>" alt="" />
+  <div class="text">
+  <h3 class="animate-text "> Название:<?php echo $product[1]; ?></h3>
+  <br>
+  <p class="animate-text"> Координаты: <?php echo $product[2]; ?></p>
+ 
+  <p class="animate-text"> Добавил: <?php echo $product[3]; ?> </p>
 <div class="dots">
     
   </div>

@@ -1,5 +1,9 @@
 <?php 
-include "config.php";
+
+include "../config/config.php"; 
+
+
+// запрос чтобы получать инфу из бд 
 
 
 if (isset($_GET['get_users'])) {

@@ -1,6 +1,6 @@
 <?php 
-include "config.php";
 
+include "../config/config.php"; 
 // запрос чтобы получать инфу из бд 
 
 $sql = "SELECT * FROM mods";
@@ -17,8 +17,8 @@ $result = $conn->query($sql);
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
-    <link rel="stylesheet" type="text/css" href="menuadmin.css">
-    <link rel="icon" href="img/mods_photos/fav.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/menuadmin.css">
+    <link rel="icon" href="../img/mods_photos/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -26,8 +26,8 @@ $result = $conn->query($sql);
 
 <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
-      <li class="menu__group"><a href="http://minepr/test/index.php" class="menu__link r-link text-underlined">В галерею из бд </a></li>
-      <li class="menu__group"><a href="http://minepr/index.php" class="menu__link r-link text-underlined">На главную</a></li>
+    <li class="menu__group"><a href="../test/index.php" class="menu__link r-link text-underlined">В галерею для загрузки файла в бд </a></li>
+      <li class="menu__group"><a href="../index.php" class="menu__link r-link text-underlined">На главную</a></li>
      
     </ul>
   </nav>
@@ -64,7 +64,7 @@ $result = $conn->query($sql);
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Обновить форму </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="refreshPage()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

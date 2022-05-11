@@ -1,4 +1,8 @@
+<?php
+require_once ('config/we.php')
+?>
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -132,53 +136,50 @@
 </div>
             
 
-       <!-- Подключение к бд прямо в файле для удобства  -->
-     
-               <?php
-        $server = "127.0.0.1";
-        $login = "root";
-        $pass = "";
-        $name_db = "mydb";
-        
-        $link = mysqli_connect($server, $login, $pass, $name_db);
-        if ($link== False ){
-            echo "соединение не удаорсь ";
-        }
-        
-        // Переменная для вывода информации с бд 
-        
-        $ret = mysqli_query($link,"SELECT * FROM `posts` ");
-        ?>
         
         <!-- Генерируем с помощью цикла блоки из информации бд  -->
         
         
         
+ <?php
+  $products = mysqli_query($connect, "SELECT * FROM `posts`");
+
+/*
+ * Преобразовываем полученные данные в нормальный массив
+ */
+
+$products = mysqli_fetch_all($products);
+
+/*
+ * Перебираем массив и рендерим HTML с данными из массива "
+ * Ключ 0 - id
+ * Ключ 1  - название 
+ * Ключ 2 название тсатьи 
+
+ 
+ * Ключ 3 - описание 
+ * 4 - ссылка 
+ 
+ */
+
+foreach ($products as $product) {
+    ?>
         
-        
-     
-        <?php
-
-
-
-
-while ($be = mysqli_fetch_assoc($ret))
-{
-  ?>
+    
 <!-- фотка -->
 <div class="col-md-4">
           <div class="profile-card text-center">
 
-            <img class="img-responsive" src="test/files/<?php echo $be['ker']?>" style="width: 400px; height: 174px;" >
+            <img class="img-responsive" src="test/files/<?php echo $product[5]; ?>" style="width: 400px; height: 174px;" >
             <div class="profile-info">
 
           
 
-              <h2 class="hvr-underline-from-center"><?php echo $be['firstname']?><span><?php echo $be['lastname']?> </span></h2>
-              <div>><?php echo $be['email']?> </div>
+              <h2 class="hvr-underline-from-center"><?php echo $product[1]; ?><span><?php echo $product[2]; ?> </span></h2>
+              <div><?php echo $product[3]; ?></div>
               <br>
 <!-- ссылка читать далее пока никуда не ведёт, в ТЗ не было прописано пункта про полноценные посты блога, только  создание механики для публикации новостей в блог и их отображения  -->
-<p style="color: red"><a href="<?php echo $be['age']?>">Читать далее</a></p> 
+<p style="color: red"><a href="<?php echo $product[4]; ?>">Читать далее</a></p> 
                <p style="color: red">Опубликовал: Админ</p> 
              
 </div>
@@ -190,11 +191,13 @@ while ($be = mysqli_fetch_assoc($ret))
 </div>
 </div>
 </div>
+              <?php
+}
+?>
+        
+ 
 
       
-      <?php
-    
-} ?>
 
 
     

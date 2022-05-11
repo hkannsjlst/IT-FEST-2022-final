@@ -1,6 +1,6 @@
 <?php
 //файл для добавления информации 
-include('database_connection.php');
+include('../config/database_connection.php');
 if(count($_FILES["file"]["name"]) > 0)
 {
  //$output = '';

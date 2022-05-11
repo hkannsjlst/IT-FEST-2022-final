@@ -1,5 +1,7 @@
 <?php 
-include "config.php";
+
+include "../config/config.php"; 
+
 
 // запрос чтобы получать инфу из бд 
 
@@ -17,10 +19,10 @@ $result = $conn->query($sql);
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
 
-    <link rel="icon" href="img/mods_photos/fav.png" type="image/x-icon">
+    <link rel="icon" href="../img/mods_photos/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="menuadmin.css">
+    <link rel="stylesheet" type="text/css" href="../css/menuadmin.css">
 </head>
 </head>
 <body>
@@ -29,8 +31,8 @@ $result = $conn->query($sql);
 
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
-      <li class="menu__group"><a href="http://minepr/test/index.php" class="menu__link r-link text-underlined">В галерею из бд </a></li>
-      <li class="menu__group"><a href="http://minepr/index.php" class="menu__link r-link text-underlined">На главную</a></li>
+     <li class="menu__group"><a href="../test/index.php" class="menu__link r-link text-underlined">В галерею для загрузки файла в бд </a></li>
+      <li class="menu__group"><a href="../index.php" class="menu__link r-link text-underlined">На главную</a></li>
      
     </ul>
   </nav>
@@ -66,12 +68,12 @@ $result = $conn->query($sql);
 
 
 <!-- Форма  -->
-<div class="modal fade" id="infformModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="infformModal" data-backdrop="static"  data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Обновить форму </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="refreshPage()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -105,7 +107,7 @@ $result = $conn->query($sql);
                 <button type="submit" class="btn btn-success float-right"onClick="refreshPage()">Отправить</button>
             </form>
             <hr>
-
+<!-- Скрипт для обновы страницы по клику на кнопки формы, нужен для корректной работы  -->
 <script>
 function refreshPage(){
     window.location.reload();
@@ -128,6 +130,8 @@ function refreshPage(){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+
+<!-- "кастомизируем" круд обращаясь к файлу процесс пхп -->
 <script type="text/javascript">
     function delete_record(id) {
         if(confirm("Уверены, что хотите удалить запись?")){

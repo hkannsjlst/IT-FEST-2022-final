@@ -2,7 +2,7 @@
 //файл для правки записей  сбазы 
 
 // создаем подклбчение к файлу с бд 
-include('database_connection.php');
+include('../config/database_connection.php');
 
 $query = "
 SELECT * FROM tbl_image 

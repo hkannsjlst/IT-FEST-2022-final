@@ -1,6 +1,6 @@
 <?php
 // таблица с картинками и функциями
-include('database_connection.php');
+include('../config/database_connection.php');
 $query = "SELECT * FROM tbl_image ORDER BY image_id DESC";
 $statement = $connect->prepare($query);
 $statement->execute();

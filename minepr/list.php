@@ -1,7 +1,6 @@
 <?php
 include "config/we.php";
 // подключились к бд и задаем переменную чтобы потом выводить значенияиз бд 
-$result = mysqli_query($link,"SELECT * FROM `registration` ");
 ?>
 
 
@@ -36,17 +35,33 @@ $result = mysqli_query($link,"SELECT * FROM `registration` ");
     </tr>
   </thead>
 
+  
+<?php
+  $products = mysqli_query($connect, "SELECT * FROM `registration`");
 
-<!-- выводим в таблицу все имеющиеся в бд заявкя циклом , при этом выводя ТОЛЬКО 4 указанных параметра  -->
-  <?php while($registration  = mysqli_fetch_assoc($result))
-{ 
-  ?>
+/*
+ * Преобразовываем полученные данные в нормальный массив
+ */
+
+$products = mysqli_fetch_all($products);
+
+/*
+ * Перебираем массив и рендерим HTML с данными из массива
+ * Ключ 0 - id
+ * Ключ 1 - имя 
+ * Ключ 2 -фамилия и отчество 
+ * Ключ 4 - почта 
+ */
+
+foreach ($products as $product) {
+    ?>
+ 
   <tbody>
   <tr>
-    <td> <?php echo $registration ['id'] ?></td>
-    <td><?php echo $registration['firstName'] ?></td>
-    <td><?php echo $registration['lastName'] ?></td>
-    <td><?php echo $registration['email'] ?></td>
+    <td> <?= $product[0] ?></td>
+    <td><?= $product[1] ?></td>
+    <td><?= $product[2] ?></td>
+    <td><?= $product[4] ?></td>
   </tr>
 </tbody>
 <?php
